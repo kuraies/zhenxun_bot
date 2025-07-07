@@ -19,7 +19,7 @@ class BotSetting(BaseModel):
     """平台超级用户"""
     qbot_id_data: dict[str, str] = Field(default_factory=dict)
     """官bot id:账号id"""
-    kaiheila_bots: list[dict[str,str]] = Field(default_factory=list)
+    kaiheila_bots: list[dict[str, str]] = Field(default_factory=list)
     """kaiheilabot id:账号id"""
     discord_bots: list[dict] = Field(default_factory=list)
     """discordbot id:账号id"""
