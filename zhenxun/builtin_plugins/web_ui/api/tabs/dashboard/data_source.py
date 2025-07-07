@@ -54,15 +54,20 @@ class ApiDataSource:
         if platform == "qq":
             login_info = await bot.get_login_info()
             nickname = login_info["nickname"]
-            ava_url = (
-                PlatformUtils.get_user_avatar_url(
+            ava_url: str = (
+                await PlatformUtils.get_user_avatar_url(
                     bot.self_id, "qq", BotConfig.get_qbot_uid(bot.self_id)
                 )
                 or ""
             )
         else:
             nickname = bot.self_id
-            ava_url = ""
+            ava_url: str = (
+                    await PlatformUtils.get_user_avatar_url(
+                        bot.self_id, platform
+                    )
+                    or ""
+            )
         bot_info = BotInfo(
             self_id=bot.self_id, nickname=nickname, ava_url=ava_url, platform=platform
         )
